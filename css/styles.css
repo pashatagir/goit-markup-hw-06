@@ -1,6 +1,7 @@
 /* -------------general and logo----------------- */
 :root {
   --accent-color: #2196f3;
+  --hover-color: #188ce8;
   --normal-color: #ffffff;
   --primary-color: #212121;
   --minor-color: #757575;
@@ -10,7 +11,8 @@
   --transition-color: color var(--transition-timing), background-color var(--transition-timing),
     fill var(--transition-timing), box-shadow var(--transition-timing),
     transform var(--transition-timing), opacity var(--transition-timing),
-    visibility var(--transition-timing), border-color var(--transition-timing);
+    visibility var(--transition-timing), border-color var(--transition-timing),
+    outline-color var(--transition-timing);
 }
 
 body {
@@ -235,7 +237,7 @@ ul {
 
 .hero-button:hover,
 .hero-button:focus {
-  background-color: #188ce8;
+  background-color: var(--hover-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -640,7 +642,7 @@ img {
 }
 
 .form-paragraph {
-  margin-bottom: 30px;
+  margin-bottom: 12px;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.15;
@@ -648,25 +650,21 @@ img {
   text-align: center;
 }
 
-.form-field {
-  position: relative;
-  margin-bottom: 28px;
+.form-field:not(:nth-child(5)) {
+  margin-bottom: 10px;
+}
+.form-field:nth-child(5) {
+  margin-bottom: 20px;
 }
 
 .form-label {
-  position: absolute;
-  top: -18px;
-  left: 0;
-  color: var(--minor-color);
+  display: block;
+  margin-bottom: 4px;
 
+  color: var(--minor-color);
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.01em;
-
-  transition: var(--transition-color);
-  /* top: 50%;
-  left: 42px;
-  transform: translateY(-50%); */
 }
 
 .form-input {
@@ -684,35 +682,25 @@ img {
   transition: var(--transition-color);
 }
 
-/* додається анімація лейбла у вигляді рухомого плейсхолдера, але при цьому треба коректувати положення у спокійному стані */
-
-/* .form-input:focus + .form-label,
-.form-input:not(:placeholder-shown) + .form-label {
-  color: var(--accent-color);
-  transform: translateY(-220%);
-} */
+.icon-wrap {
+  position: relative;
+}
 
 .form-svg {
   position: absolute;
   top: 50%;
-  left: 15px;
-
+  left: 12px;
   transform: translateY(-50%);
+
   transition: var(--transition-color);
 }
 
-.form-input:hover,
-.form-text:hover {
-  border-color: var(--accent-color);
+.form-input:focus,
+.form-text:focus {
+  outline: 1px solid var(--accent-color);
 }
 
-.form-input:focus + .form-label,
-.form-text:focus + .form-label {
-  color: var(--accent-color);
-}
-
-.form-input:hover ~ .form-svg,
-.form-input:focus ~ .form-svg {
+.form-input:focus + .form-svg {
   fill: var(--accent-color);
 }
 
@@ -734,11 +722,89 @@ img {
 
 ::placeholder {
   color: rgba(117, 117, 117, 0.5);
+}
+
+.check-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: #757575;
+}
+
+/* -------visually-hidden-default-checkbox---------*/
+.check-input {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.check-span {
+  position: relative;
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--primary-color);
+  border-radius: 2px;
+  cursor: pointer;
+  margin-right: 7px;
+}
+
+.check-input:checked + .check-span {
+  border: none;
+  background-color: var(--accent-color);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.check-icon {
+  fill: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.check-input:checked + .check-span .check-icon {
+  fill: var(--normal-color);
+}
+.check-link {
+  color: var(--accent-color);
+
   transition: var(--transition-color);
 }
-:hover::placeholder {
-  color: var(--accent-color);
+
+.check-link:hover,
+.check-link:focus {
+  text-decoration: none;
+  color: var(--hover-color);
 }
-:focus::placeholder {
-  color: rgba(117, 117, 117, 0.5);
+
+.form-button {
+  font-weight: 700;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  color: var(--normal-color);
+  background-color: var(--accent-color);
+  border-radius: 4px;
+  padding: 10px 52px;
+  min-width: 200px;
+  transition: var(--transition-color);
+  display: block;
+  margin: 0 auto;
+}
+
+.form-button:hover,
+.form-button:focus {
+  background-color: var(--hover-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
