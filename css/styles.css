@@ -7,12 +7,7 @@
   --minor-color: #757575;
   --secondary-color: #f5f4fa;
   --color-deco: #afb1b8;
-  --transition-timing: 4250ms cubic-bezier(0.4, 0, 0.2, 1);
-  /* --transition-color: color var(--transition-timing), background-color var(--transition-timing),
-    fill var(--transition-timing), box-shadow var(--transition-timing),
-    transform var(--transition-timing), opacity var(--transition-timing),
-    visibility var(--transition-timing), border-color var(--transition-timing),
-    outline-color var(--transition-timing); */
+  --transition-timing: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -187,17 +182,18 @@ ul {
   transform: scaleX(1);
 }
 
+.contacts-icon-tel,
+.contacts-icon-mail {
+  margin-right: 10px;
+  fill: currentColor;
+  transition: fill var(--transition-timing);
+}
+
 .contacts-link {
   display: flex;
   align-items: center;
   font-style: normal;
   color: var(--minor-color);
-  fill: currentColor;
-}
-
-.contacts-icon-tel,
-.contacts-icon-mail {
-  margin-right: 10px;
 }
 
 /* ----------------section hero----------------- */
@@ -451,7 +447,12 @@ img {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.action-title {
+.action {
+  margin-right: 93px;
+}
+
+.action-paragraph,
+.send-paragraph {
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 1.14;
@@ -482,6 +483,56 @@ img {
   background-color: currentColor;
 }
 
+.send-input {
+  min-width: 385px;
+  height: 50px;
+  padding: 15px 0px 15px 15px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: var(--normal-color);
+
+  transition: border-color var(--transition-timing);
+}
+
+.send-input:focus {
+  border-color: var(--accent-color);
+}
+
+.send-input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.send-button {
+  font-weight: 700;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  color: var(--normal-color);
+  background-color: var(--accent-color);
+  border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.send-wrap {
+  display: flex;
+  gap: 12px;
+}
 /* -------------portfolio-------------- */
 
 .filters-list {
@@ -680,7 +731,7 @@ img {
   border-radius: 4px;
   border: 1px solid rgba(33, 33, 33, 0.2);
 
-  transition: outline var(--transition-timing);
+  transition: border-color var(--transition-timing);
 }
 
 .icon-wrap {
@@ -698,7 +749,7 @@ img {
 
 .form-input:focus,
 .form-text:focus {
-  outline: 1px solid var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .form-input:focus + .form-svg {
@@ -710,16 +761,18 @@ img {
   height: 120px;
   padding: 12px 16px;
   resize: none;
-
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.01em;
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid rgba(33, 33, 33, 0.2);
+
+  transition: border-color var(--transition-timing);
 }
 
-::placeholder {
+.form-text::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
   color: rgba(117, 117, 117, 0.5);
 }
 
@@ -757,12 +810,14 @@ img {
   border-radius: 2px;
   cursor: pointer;
   margin-right: 7px;
+
+  transition: background-color var(--transition-timing), box-shadow var(--transition-timing);
 }
 
 .check-input:checked + .check-span {
   border: none;
   background-color: var(--accent-color);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .check-icon {
@@ -771,6 +826,7 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: fill var(--transition-timing);
 }
 
 .check-input:checked + .check-span .check-icon {
@@ -799,9 +855,6 @@ img {
   min-width: 200px;
   display: block;
   margin: 0 auto;
-
-  transition: color var(--transition-timing), background-color var(--transition-timing),
-    border-color var(--transition-timing), box-shadow var(--transition-timing);
 }
 
 .form-button:hover,
