@@ -65,7 +65,7 @@ ul {
   color: currentColor;
   font-size: 14px;
 
-  transition: color var(--transition-timing);
+  transition: color var(--transition-timing), background-color var(--transition-timing);
 }
 
 .link:hover,
